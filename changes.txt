@@ -1,0 +1,94 @@
+09-05-2013
+------------------
+Update and manual text: http://myrad4php.wordpress.com
+Existe un generador de menus en la siguiente direccion <rutadetuaplicacion>/efm/mnubuillder.php
+Los menus se generan en un archivo llamado menuxml.xml en la carpeta config.
+Se ha adicionado la capacidad de de trabajo ajax para interactuar entre php y ajax y asi mostar valores sin recargar las paginas.
+otros.
++-------------------
+
+Existe la clase menubuillder que genra un array y una lista en string que contiene un html de listas, para ser usado con el objeto menu de las jquery-ui y generar un menu o para cualquier otro, esta clase trabaja con un array basado en una tabla que tiene relacion circular de esta manera:
+campoid, campotexto, campo fk hacia campoid asi el tercer campo hace referencia al primero para generar los submenus.
+
+Ahora soporta Apache alias, sin problemas.
+
+Se ha añadido un validador de librerias antes de escger idomas al generar la aplicacion, asi le indica que tiene que tener instaladas las librerias.
+
+Se requiere la libreria html2pdf para las impresiones de los listados.
+
+Archivo /swdd/template_pages/list.tpl
+Se adicionado un combo y un boton, l primero para seleccionar la orientacion de la pagina y el segundo para imprimir en PDf.
+
+Archivo /swdd/template_pages/list.tpl
+Se a añadido el filtrado por rangos de fechas para los tipos datetime y subtipo date.
+
+Archivo /swdd/cpontrols_php/cuadricula.php
+Ahora se asigan las etiquetas para valores logicos deacuerdo al idioma, asi como la cabecera de operaciones, todo sacado de los archivos de idiomas.
+
+Archivo: /swdd/cpontrols_php/cuadricula.php
+Clase: cuadricula
+Se ha adicionado la propiedad simple que indica si la cuadricula se presenta sin opciones (modificar, listar, detalles) ni el check al lado izquierdo
+
+Archivo: /swdd/cpontrols_php/cuadricula.php
+Clase: cuadricula
+Metodo: maketable()
+Arreglado el problema de desorden al colocar mostrar en flase a un campo en el listado o las opciones y ahora se puede generar un listado sin el check. 
+
+Archivo: /efm/configapp.php
+Se a arreglado el error de rutas que sucedia cuando se usaba alias en Apache (gracias a Fred de PHPCLASSES)
+
+
+NOTE: manual no updated yet.
+18/03/2013
+Changes in the structure:
+You have created the folder "config" in the root of the site where they now reside congifuracion files.
+You have created the ability to choose language for that language folder exists, where you put files containing global variables for the interface settings.
+Classes have been added "__idiomas" and "admin_idiomas" languages that control the generation of application interface.
+Setidioma function addition ($ smarty) the file $ smarty utils.php which is an instance of the class Smarty_myrad4php.
+
+Changes in the interface:
+All templates now use the tags defined in the language files "/config/idiomas"
+Generator added to the language selection interface "seleidioma.php" before the application configurator "configapp.php"
+The application configurator "configapp.php" now has a combo to Select the language of the user interface Jan l listed files to select the language. There are only two languages: Spanish  = spanish.php and english.php = inglish.php
+
+Changes 
+
+login.php
+used the class labeled "Security is" in the generator to work with ORM class for encryption settings of:
+Example if you put as security table to table "users" if desired then encrypts the value, the SET password property would be done processing.
+	class users
+	{
+		public $editado;
+		public $esnuevo;
+		private $idusuario;
+		private $usuario;
+		private $clave;
+		private $nombre;
+		.
+		.
+		.
+		function __set($propiedad,$valor)
+		{
+			switch($propiedad)
+			{
+				case "idusuario":
+					$this->idusuario=$valor;
+					break;
+				case "usuario":
+					$this->usuario=$valor;
+					break;
+				case "clave":
+					$this->clave=$valor;
+					//put here code for encript
+					break;
+				case "nombre":
+					$this->nombre=$valor;
+					break;
+				default:
+					$this->$propiedad=$valor;
+			}
+		}
+		.
+		.
+		.
+	}

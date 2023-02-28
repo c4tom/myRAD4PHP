@@ -1,0 +1,1 @@
+<input type="checkbox" name="{$value@key}" {if $value.valor eq "on"} checked="{$value.valor}" {/if} id="{$value@key}" linkfields="{$value.linkfields}"/>

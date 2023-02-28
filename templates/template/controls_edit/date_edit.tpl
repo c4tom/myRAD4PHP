@@ -1,0 +1,1 @@
+<input type="text" class="datepicker" name="{$value@key}" value="{$value.valor}" id="{$value@key}"  linkfields="{$value.linkfields}"/>

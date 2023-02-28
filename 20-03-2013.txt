@@ -1,0 +1,30 @@
+Existe la clase menubuillder que genra un array y una lista en string que contiene un html de listas, para ser usado con el objeto menu de las jquery-ui y generar un menu o para cualquier otro, esta clase trabaja con un array basado en una tabla que tiene relacion circular de esta manera:
+campoid, campotexto, campo fk hacia campoid asi el tercer campo hace referencia al primero para generar los submenus.
+
+Ahora soporta Apache alias, sin problemas.
+
+Se ha añadido un validador de librerias antes de escger idomas al generar la aplicacion, asi le indica que tiene que tener instaladas las librerias.
+
+Se requiere la libreria html2pdf para las impresiones de los listados.
+
+Archivo /swdd/template_pages/list.tpl
+Se adicionado un combo y un boton, l primero para seleccionar la orientacion de la pagina y el segundo para imprimir en PDf.
+
+Archivo /swdd/template_pages/list.tpl
+Se a añadido el filtrado por rangos de fechas para los tipos datetime y subtipo date.
+
+Archivo /swdd/cpontrols_php/cuadricula.php
+Ahora se asigan las etiquetas para valores logicos deacuerdo al idioma, asi como la cabecera de operaciones, todo sacado de los archivos de idiomas.
+
+Archivo: /swdd/cpontrols_php/cuadricula.php
+Clase: cuadricula
+Se ha adicionado la propiedad simple que indica si la cuadricula se presenta sin opciones (modificar, listar, detalles) ni el check al lado izquierdo
+
+Archivo: /swdd/cpontrols_php/cuadricula.php
+Clase: cuadricula
+Metodo: maketable()
+Arreglado el problema de desorden al colocar mostrar en flase a un campo en el listado o las opciones y ahora se puede generar un listado sin el check. 
+
+Archivo: /efm/configapp.php
+Se a arreglado el error de rutas que sucedia cuando se usaba alias en Apache (gracias a Fred de PHPCLASSES)
+

@@ -1,0 +1,1 @@
+<textarea name="{$value@key}" rows="10" cols="100">{$value.valor}</textarea>
